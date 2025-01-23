@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: torchserve-sd3-config-{{ .Values.configVersions.modelServer }}
+    namespace: {{ .Values.namespace }}
+    labels:
+        app.kubernetes.io/name: torchserve-sd3
+        app.kubernetes.io/version: {{ .Values.configVersions.modelServer }}
+        app.kubernetes.io/part-of: fastapi-app
+data:
+    model_server_url: "http://k8s-istioing-istioing-ecd4b2b2ab-59c2923d5944e53c.elb.ap-south-1.amazonaws.com"
+    # model_server_url: "http://k8s-istioing-istioing-494293efcc-3fbae2cd5f4bd01d.elb.ap-south-1.amazonaws.com/v1/models/sd_small:predict"
+    model_name: {{ .Values.modelName }}
