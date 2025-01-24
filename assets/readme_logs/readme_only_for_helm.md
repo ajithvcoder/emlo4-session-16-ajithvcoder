@@ -172,6 +172,9 @@ Deleteion
 helm uninstall fastapi-release-default  (may through an error as we have did some hacky change for helm install fastapi-release-default)
 kubectl delete secret sh.helm.release.v1.fastapi-release-default.v1  -n default (this will completely uninstall helm's particular resources)
 eksctl delete cluster -f eks-cluster.yaml --disable-nodegroup-eviction
+
+Wait paitently see all deletion is successfull in cloud formation and then close the system because some times
+the deletion gets failed so at backend something would be running and it may cost you high
 -------------------------------------------------------------------------------------------------------------------
 <docker build>
 docker build -t a16/web-server -f Dockerfile.web-server  . --no-cache
