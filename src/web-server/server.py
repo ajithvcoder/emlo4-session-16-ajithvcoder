@@ -85,7 +85,8 @@ async def generate_image(text: str):
                 raise Exception(f"Torchserve error: {response.text}")
             # print(response.text)
             # Construct image from response
-            image = Image.fromarray(np.array(json.loads(response.text), dtype="uint8"))
+            # image = Image.fromarray(np.array(json.loads(response.text), dtype="uint8"))
+            image = Image.fromarray(np.array(response.json()["predictions"][0], dtype="uint8"))
             image.save("output_image.png")
 
             # Save the image to a BytesIO stream

@@ -18,7 +18,7 @@ def generate_image(prompt: str, output_path: str = "output.jpg"):
     """
     # Endpoint configuration
     
-    url = "http://k8s-istioing-istioing-ecd4b2b2ab-59c2923d5944e53c.elb.ap-south-1.amazonaws.com/v1/models/sd_small:predict"
+    url = "http://k8s-istioing-istioing-7d09313456-2023a0a0769473e1.elb.ap-south-1.amazonaws.com/v1/models/sd_small:predict"
 
     # Headers
     headers = {
@@ -63,7 +63,7 @@ def generate_image(prompt: str, output_path: str = "output.jpg"):
         return False
 
 def list_models():
-    base_url = "http://k8s-istioing-istioing-ecd4b2b2ab-59c2923d5944e53c.elb.ap-south-1.amazonaws.com"
+    base_url = "http://k8s-istioing-istioing-7d09313456-2023a0a0769473e1.elb.ap-south-1.amazonaws.com"
     headers = {
         "Host": "torchserve-sd3-default.example.com",
     }

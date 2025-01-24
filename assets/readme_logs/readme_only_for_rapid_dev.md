@@ -69,9 +69,7 @@ helm install istiod istio/istiod  --version 1.20.2  --namespace istio-system --w
 kubectl create namespace istio-ingress
 
 <debug>
-helm uninstall istio-ingress istio/gateway \
-  --version 1.20.2 \
-  --namespace istio-ingress \
+helm uninstall istio-ingress --namespace istio-ingress
 
 helm install istio-ingress istio/gateway \
   --version 1.20.2 \

@@ -150,7 +150,9 @@ eksctl create iamserviceaccount \
 	--override-existing-serviceaccounts \
 	--region ap-south-1 \
 	--approve
--- kubectl apply -f s3-secret.yaml -- moved to helm
+
+-- not able to move to helm
+kubectl apply -f s3-secret.yaml 
 
 kubectl patch serviceaccount s3-read-only -p '{"secrets": [{"name": "s3-secret"}]}'
 
@@ -166,12 +168,15 @@ kubectl annotate namespace default meta.helm.sh/release-name=fastapi-release-def
 kubectl annotate namespace default meta.helm.sh/release-namespace=default
 helm install fastapi-release-default fastapi-helm --values fastapi-helm/values.yaml --namespace default
 
-kubectl delete secret sh.helm.release.v1.fastapi-release-default.v1  -n default
-
+Deleteion
+helm uninstall fastapi-release-default  (may through an error as we have did some hacky change for helm install fastapi-release-default)
+kubectl delete secret sh.helm.release.v1.fastapi-release-default.v1  -n default (this will completely uninstall helm's particular resources)
+eksctl delete cluster -f eks-cluster.yaml --disable-nodegroup-eviction
+-------------------------------------------------------------------------------------------------------------------
 <docker build>
 docker build -t a16/web-server -f Dockerfile.web-server  . --no-cache
 
-kubectl exec -it web-server-544655c4ff-jdsx5  -- /bin/bash
+kubectl exec -it ui-server-59cb8d9f96-8559p      -- /bin/bash
 uvicorn server:app --host 0.0.0.0 --port 80
 
 host three things
@@ -186,4 +191,21 @@ curl -X POST http://0.0.0.0:9090/generate_image \
 -d '{"text": "generate image"}'
 
 curl -X POST "http://0.0.0.0:9090/generate_image?text=horseriding"
+curl -X POST "http://web-server-service/generate_image?text=horseriding"
+http://web-server-service
 
+todo: 
+debugging new image with delete command
+ kubectl delete pods/web-server-669c6cc8f8-zjvsd 
+
+
+ Output of kubectl get all -A
+Manifest Files used for deployments
+Kiali Graph of the Deployment
+GPU Usage from Grafana and Prometheus while on LOAD
+Logs of your torchserve-predictor
+5 Outputs of the SD3 Model
+Make sure you copy the logs of torchserve pod while the model is inferencing
+
+todo:
+book train
