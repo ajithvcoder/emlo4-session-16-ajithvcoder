@@ -2,7 +2,7 @@
 
 Deploy LLM/Diffusuion model with AWS EKS service with front end(Next JS), backend(Fastapi) and network configurations like ISTIO, S3 association along with Serving tools like KServe, with monitoring tools like Kiali, prometheus, grafana.
 
-**Note:** 
+**Note:**
 - I have used "OFA-Sys/small-stable-diffusion-v0" with 256x256 resolution image generation instead of SD3-medium with 1024x1024 as the cost of debugging and developing in g6.2xlarge is very high 
 
 - If you take a g6.2xlarge instance it cost 0.4$ per hour even for spot instance so either develop with a small model first with g4dn.xlarge and if eveything works fine go for sd3 models. Else you will end up lossing 5-7 dollars for gpu alone. While developing assignment use a small model + <=256x256 generation image with diffuser. Dont use sd3 or 1024x1024 inference first itself it needs 24GB GPU RAM to load
@@ -486,51 +486,53 @@ the deletion gets failed so at backend something would be running and it may cos
 
 ### Results Screenshots
 
-Ouput of kubectl get all -A
+- Ouput of kubectl get all -A
 
-- [kubectl get all](./assets/logs/kubectl_logs_all.txt)
+    - [kubectl get all](./assets/logs/kubectl_logs_all.txt)
 
-Kiali Graph of the Deployment
+- Kiali Graph of the Deployment
 
-- ![](./assets/images/snap_kiali_graph_1.png)
-- ![](./assets/images/snap_kiali_torchserve.png)
-- ![](./assets/images/snap_kiali_services.png)
+    ![](./assets/images/snap_kiali_graph_1.png)
 
-GPU Usage from Grafana and Prometheus while on LOAD
+    ![](./assets/images/snap_kiali_torchserve.png)
 
-- ![](./assets/images/snap_grafana_gpu_util.png)
-- ![](./assets/images/snap_grafana_gpu.png)
-- ![](./assets/images/snap_grafana_1.png)
-- ![](./assets/images/snap_prometheus_on_load.png)
+    ![](./assets/images/snap_kiali_services.png)
 
-Logs of your torchserve-predictor
+- GPU Usage from Grafana and Prometheus while on LOAD
 
-- [logs of torch serve predictor](./assets/logs/torchserve_logs.txt)
+    ![](./assets/images/snap_grafana_gpu_util.png)
+    ![](./assets/images/snap_grafana_gpu.png)
+    ![](./assets/images/snap_grafana_1.png)
+    ![](./assets/images/snap_prometheus_on_load.png)
 
-5 Outputs of the SD3 Model
+- Logs of your torchserve-predictor
 
-- ![](./assets/images/snap_result_ui_1.png)
-- ![](./assets/images/snap_result_ui_2.png)
-- ![](./assets/images/snap_result_ui_3.png)
-- ![](./assets/images/snap_result_ui_4.png)
-- ![](./assets/images/snap_result_ui_5.png)
+    - [logs of torch serve predictor](./assets/logs/torchserve_logs.txt)
+
+- 5 Outputs of the SD3 Model
+
+    ![](./assets/images/snap_result_ui_1.png)
+    ![](./assets/images/snap_result_ui_2.png)
+    ![](./assets/images/snap_result_ui_3.png)
+    ![](./assets/images/snap_result_ui_4.png)
+    ![](./assets/images/snap_result_ui_5.png)
 
 - [logs of torch serve 5 inference](./assets/logs/torchserve_logs.txt)
 
-Other logs
+- Other logs
 
-- [all logs](./assets/logs/)
+    - [all logs](./assets/logs/)
 
-Other Screenshots
+- Other Screenshots
 
-- ![](./assets/images/snap_loadbalancers.png)
-- ![](./assets/images/snap_get_nodes.png)
-- ![](./assets/images/snap_get_all_res.png)
-- ![](./assets/images/snap_get_all_res_2.png)
+    ![](./assets/images/snap_loadbalancers.png)
+    ![](./assets/images/snap_get_nodes.png)
+    ![](./assets/images/snap_get_all_res.png)
+    ![](./assets/images/snap_get_all_res_2.png)
 
 
-- ![](./assets/images/snap_describe_nodegroup.png)
-- ![](./assets/images/snap_describe_ingress.png)
+    ![](./assets/images/snap_describe_nodegroup.png)
+    ![](./assets/images/snap_describe_ingress.png)
 
 ### Group Members
 
