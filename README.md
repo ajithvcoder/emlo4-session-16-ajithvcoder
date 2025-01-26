@@ -42,7 +42,7 @@ and the AWS instance is terminated finally**
         - Make sure you copy the logs of torchserve pod while the model is inferencing
     - GitHub Repo with the README.md file and manifests and logs
 
-### Architecture Diagram #todo
+### Architecture Diagram
 
 ![](./assets/images/snap_assgn_16_arch.png)
 
