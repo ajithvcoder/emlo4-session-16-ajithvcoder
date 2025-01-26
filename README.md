@@ -19,7 +19,7 @@ and the AWS instance is terminated finally**
     - [Architecture Diagram](#architecture-diagram)
     - [Installation](#installation)
     - [Cluster creation and configuration](#cluster-creation-and-configuration)
-    - [Install ISTIO and loadbalancer](#install-istio-and-loadbalance)
+    - [Install ISTIO and loadbalancer](#install-istio-and-loadbalancer)
     - [KServe and Helm Deployment](#kserve-and-helm-deployment)
     - [Monitoring and visuvalization](#monitoring-and-visuvalization)
     - [Deletion Procedure](#deletion-procedure)
@@ -44,15 +44,13 @@ and the AWS instance is terminated finally**
 
 ### Architecture Diagram #todo
 
-![](./assets/images/snap_a15_arch.png)
-
-![](./assets/images/snap_a15_arch_2.png)
+![](./assets/images/snap_assgn_16_arch.png)
 
 Note: You can refer [class-work](./eks-dev-class-work) and develop the deployments stage by stage similar in session-16 class
 
 Refer: [class-work-readme](./eks-dev-class-work/README.md) for proper usage of classwork files (it gives the commands in proper manner. todo: restructure it)
 
-Note: it took 5$ for doing class work debugging and development and 7$ for assignment debugging and development as i used g6.2xlarge initially so dont do that mistake.
+Note: it took 5$ for doing class work debugging and development and another 7$ for assignment debugging and development as i used g6.2xlarge initially so dont do that mistake.
 
 Local installations (no need a new ec2 instance for doing below work)
 
@@ -124,6 +122,11 @@ UI server
 - `docker build -t ui-server -f Dockerfile.ui-server .`
 
 **Model file preparation**
+
+Take a new spot instance **manully** `g4dn.xlarge` and check if it works else go for small model or take larger GPU instance
+Use the code inside [model-server/sd3_deploy/test_small_model_infer](./src/model-server/sd3_deploy/test_small_model_infer.py)
+
+- `python test_small_model_infer.py`
 
 Use the code inside [model-server/sd3_deploy](./src/model-server/sd3_deploy/)
 ```
@@ -533,6 +536,10 @@ the deletion gets failed so at backend something would be running and it may cos
 
     ![](./assets/images/snap_describe_nodegroup.png)
     ![](./assets/images/snap_describe_ingress.png)
+
+- Architecture
+
+    ![](./assets/images/snap_assgn_16_arch.png)
 
 ### Group Members
 

@@ -1,3 +1,4 @@
+This file was used for developing and debugging the class works. Structured file is present [here](../../eks-dev-class-work/README.md)
 
 Model file preparation
 

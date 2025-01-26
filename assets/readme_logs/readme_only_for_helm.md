@@ -1,3 +1,5 @@
+Refer the main [Readme](../../README.md) both are same
+
 Used g4dn.xlarge 16GB mem gpu with a small model("OFA-Sys/small-stable-diffusion-v0") and small image(256x256) generation size as the cost of g6.2xlarge + sd3 is too high its 4x cost per hour.
 Also even for "OFA-Sys/small-stable-diffusion-v0" model a 1024x1024 needs 24GB GPU so its better to reduce the image generation size to 256x256 or even smaller since the objective is to deploy properly and infer
 
